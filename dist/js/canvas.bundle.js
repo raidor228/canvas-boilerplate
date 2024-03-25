@@ -311,11 +311,6 @@ var Character = /*#__PURE__*/function () {
         y: this.position.y - 20
       });
     }
-
-    //const self = this;
-    //window.addEventListener("load", function() {
-    //    self.videoContainer.video.play();
-    //});
   }
   return _createClass(Character, [{
     key: "reset",
@@ -436,8 +431,6 @@ function gameOver(win) {
   document.body.appendChild(link);
   document.body.appendChild(link2);
   document.body.appendChild(restartButton);
-
-  // 
 }
 var Player = /*#__PURE__*/function (_Character) {
   function Player(source) {
@@ -481,18 +474,20 @@ var Enemy = /*#__PURE__*/function (_Character2) {
   return _createClass(Enemy, [{
     key: "moveToPlayer",
     value: function moveToPlayer() {
-      if (this.player.position.x < this.position.x) {
-        this.position.x -= this.speed;
-        this.flyingText.move(-this.speed);
-      } else {
-        this.position.x += this.speed;
-        this.flyingText.move(this.speed);
-      }
-      var distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
-      var distanceToPlayerY = Math.abs(this.player.position.y - this.position.y);
-      if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
-        this.player.takeDamage(this.damage);
-        this.lastAttackTime = Date.now();
+      if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
+        if (this.player.position.x < this.position.x) {
+          this.position.x -= this.speed;
+          this.flyingText.move(-this.speed);
+        } else {
+          this.position.x += this.speed;
+          this.flyingText.move(this.speed);
+        }
+        var distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
+        var distanceToPlayerY = Math.abs(this.player.position.y - this.position.y);
+        if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
+          this.player.takeDamage(this.damage);
+          this.lastAttackTime = Date.now();
+        }
       }
     }
   }, {
@@ -754,16 +749,12 @@ function animate() {
   } else {
     player.onGround = false;
   }
-
-  // win
   if (enemies.length === 0) {
     gameIsOver = true;
     requestAnimationFrame(function () {
       gameOver(true);
     });
   }
-
-  // lose
   if (player.position.y > canvas.height) {
     player.position.y = 200;
     player.velocity.y = 0;
