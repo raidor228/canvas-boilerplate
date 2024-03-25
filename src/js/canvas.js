@@ -91,12 +91,6 @@ class Character {
 		if (!this.hasVelocity) {
 			this.flyingText = new FlyingText({x: this.position.x, y: this.position.y - 20});
 		}
- 
-		
-        //const self = this;
-        //window.addEventListener("load", function() {
-        //    self.videoContainer.video.play();
-        //});
     }
 
     readyToPlayVideo() {
@@ -220,8 +214,6 @@ function gameOver(win) {
 	document.body.appendChild(link);
 	document.body.appendChild(link2);
 	document.body.appendChild(restartButton); 
-	
-	// 
 }
 
 class Player extends Character {
@@ -260,20 +252,22 @@ class Enemy extends Character {
 	}
 	
 	moveToPlayer() {
-		if (this.player.position.x < this.position.x) {
-			this.position.x -= this.speed;
-			this.flyingText.move(-this.speed);
-		}
-		else {
-			this.position.x += this.speed;
-			this.flyingText.move(this.speed);
-		}
-		
-		const distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
-		const distanceToPlayerY = Math.abs(this.player.position.y - this.position.y);
-		if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
-			this.player.takeDamage(this.damage);
-			this.lastAttackTime = Date.now();
+		if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
+			if (this.player.position.x < this.position.x) {
+				this.position.x -= this.speed;
+				this.flyingText.move(-this.speed);
+			}
+			else {
+				this.position.x += this.speed;
+				this.flyingText.move(this.speed);
+			}
+			
+			const distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
+			const distanceToPlayerY = Math.abs(this.player.position.y - this.position.y);
+			if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
+				this.player.takeDamage(this.damage);
+				this.lastAttackTime = Date.now();
+			}
 		}
 	}
 	
@@ -534,7 +528,6 @@ function animate() {
 		player.onGround = false;
 	}
 
-    // win
     if (enemies.length === 0) {
         gameIsOver = true;
 		requestAnimationFrame(function() {
@@ -542,7 +535,6 @@ function animate() {
 		});
     }
 
-    // lose
     if (player.position.y > canvas.height) {
         player.position.y = 200;
 		player.velocity.y = 0;
