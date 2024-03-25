@@ -252,8 +252,6 @@ class Enemy extends Character {
 	}
 	
 	moveToPlayer() {
-		console.log(Math.abs(player.position.x - this.position.x));
-		console.log(canvas.width);
 		if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
 			if (this.player.position.x < this.position.x) {
 				this.position.x -= this.speed;
