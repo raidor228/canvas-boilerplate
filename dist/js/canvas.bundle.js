@@ -260,6 +260,8 @@ var minDistanceToAttackX = 150;
 var minDistanceToAttackY = 250;
 var kills = 0;
 var startTime = new Date();
+c.font = '24px Arial';
+c.fillStyle = 'white';
 
 // audio
 var deathAudio = new Audio(_aud_death_mp3__WEBPACK_IMPORTED_MODULE_6__["default"]);
@@ -309,10 +311,11 @@ var Character = /*#__PURE__*/function () {
         y: this.position.y - 20
       });
     }
-    var self = this;
-    document.addEventListener("DOMContentLoaded", function () {
-      self.videoContainer.video.play();
-    });
+
+    //const self = this;
+    //window.addEventListener("load", function() {
+    //    self.videoContainer.video.play();
+    //});
   }
   return _createClass(Character, [{
     key: "reset",
@@ -334,6 +337,9 @@ var Character = /*#__PURE__*/function () {
   }, {
     key: "updateCanvas",
     value: function updateCanvas() {
+      if (this.videoContainer.video.paused) {
+        return;
+      }
       if (this.videoContainer !== undefined && this.videoContainer.ready) {
         var scale = this.videoContainer.scale;
         var vidH = this.videoContainer.video.videoHeight;
@@ -698,8 +704,6 @@ function animate() {
   characterItems.forEach(function (item) {
     item.draw();
   });
-  c.font = '24px Arial';
-  c.fillStyle = 'white';
   c.fillText('Управление', 35, 50);
   c.fillText('W - прыжок', 35, 80);
   c.fillText('A - влево', 35, 110);
@@ -765,10 +769,18 @@ function animate() {
     player.velocity.y = 0;
   }
 }
-init();
-animate();
+var keyed = false;
 addEventListener('keydown', function (_ref3) {
   var keyCode = _ref3.keyCode;
+  if (!keyed) {
+    keyed = true;
+    init();
+    animate();
+    player.videoContainer.video.play();
+    enemies.forEach(function (enemy) {
+      enemy.videoContainer.video.play();
+    });
+  }
   switch (keyCode) {
     case 65:
       // left
@@ -808,6 +820,7 @@ addEventListener('keyup', function (_ref4) {
       break;
   }
 });
+c.fillText('Нажмите любую клавишу чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);
 })();
 
 /******/ })()

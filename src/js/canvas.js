@@ -34,6 +34,9 @@ let kills = 0;
 
 const startTime = new Date();
 
+c.font = '24px Arial';
+c.fillStyle = 'white';
+
 // audio
 var deathAudio = new Audio(death);
 var takeDamageAudio = new Audio(take_damage);
@@ -89,10 +92,11 @@ class Character {
 			this.flyingText = new FlyingText({x: this.position.x, y: this.position.y - 20});
 		}
  
-        const self = this;
-        document.addEventListener("DOMContentLoaded", function() {
-            self.videoContainer.video.play();
-        });
+		
+        //const self = this;
+        //window.addEventListener("load", function() {
+        //    self.videoContainer.video.play();
+        //});
     }
 
     readyToPlayVideo() {
@@ -104,6 +108,11 @@ class Character {
     }
 
     updateCanvas() {
+		if (this.videoContainer.video.paused)
+		{
+			return;
+		}
+		
         if(this.videoContainer !== undefined && this.videoContainer.ready){
             var scale = this.videoContainer.scale;
             var vidH = this.videoContainer.video.videoHeight;
@@ -464,8 +473,6 @@ function animate() {
 		item.draw();
 	});
 	
-	c.font = '24px Arial';
-	c.fillStyle = 'white';
 	c.fillText('Управление', 35, 50);
 	c.fillText('W - прыжок', 35, 80);
 	c.fillText('A - влево', 35, 110);
@@ -542,10 +549,23 @@ function animate() {
     }
 }
 
-init();
-animate();
+
+
+let keyed = false;
 
 addEventListener('keydown', ({ keyCode }) => {
+	if (!keyed) {
+		keyed = true;
+		
+		init();
+		animate();
+		
+		player.videoContainer.video.play();
+		enemies.forEach(enemy => {
+			enemy.videoContainer.video.play();
+		});
+	}
+	
     switch (keyCode) {
         case 65: // left
             keys.left.pressed = true;
@@ -577,3 +597,5 @@ addEventListener('keyup', ({ keyCode }) => {
             break;
     }
 })
+
+c.fillText('Нажмите любую клавишу чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);
