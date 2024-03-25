@@ -1,5 +1,5 @@
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -24,7 +24,32 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images' // Путь, куда будут скопированы изображения после сборки
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp4|webm)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'videos' // Путь, куда будут скопированы видеофайлы после сборки
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp3)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'audio' // Путь, куда будут скопированы аудиофайлы после сборки
+            }
           }
         ]
       }
@@ -46,4 +71,4 @@ module.exports = {
   ],
   watch: true,
   devtool: 'source-map'
-}
+};
