@@ -185,7 +185,7 @@ function gameOver(win) {
 	statusText.style.left = '50%';
 	statusText.style.transform = 'translate(-50%, -80%)';
 	statusText.style.padding = '20px 40px';
-	statusText.style.fontSize = '36px';
+	statusText.style.fontSize = '46px';
 
 	const restartButton = document.createElement('button');
 	restartButton.textContent = 'Начать сначала';
@@ -212,7 +212,7 @@ function gameOver(win) {
 	interest.style.left = '50%';
 	interest.style.transform = 'translate(-50%, -80%)';
 	interest.style.padding = '20px 40px';
-	interest.style.fontSize = '20px';
+	interest.style.fontSize = '30px';
 
 	const link = document.createElement('a');
 	link.href = 'https://kick.com/mellstroy271';
@@ -225,7 +225,7 @@ function gameOver(win) {
 	link.style.left = '50%';
 	link.style.transform = 'translate(-50%, -50%)';
 	link.style.padding = '20px 40px';
-	link.style.fontSize = '20px';
+	link.style.fontSize = '30px';
 	
 	const link2 = document.createElement('a');
 	link2.href = 'https://t.me/mellstroybonus';
@@ -238,7 +238,7 @@ function gameOver(win) {
 	link2.style.left = '50%';
 	link2.style.transform = 'translate(-50%, -50%)';
 	link2.style.padding = '20px 40px';
-	link2.style.fontSize = '20px';
+	link2.style.fontSize = '30px';
 	
 	document.body.appendChild(interest);
 	document.body.appendChild(statusText);
