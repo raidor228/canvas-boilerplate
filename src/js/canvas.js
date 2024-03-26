@@ -23,8 +23,8 @@ import boss_fight from '../aud/boss_fight.mp3'
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
  
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 1600;
+canvas.height = 900;
 
 const gravity = 1.5;
 
@@ -47,7 +47,7 @@ const minDistanceToAttackY = 250;
 
 let kills = 0;
 
-const startTime = new Date();
+let startTime = new Date();
 
 c.font = '24px Arial';
 c.fillStyle = 'white';
@@ -69,7 +69,8 @@ class FlyingText {
 	}
 	
 	move(offset) {
-		this.position.x += offset;
+		this.position.x += offset.x;
+		this.position.y += offset.y;
 	}
 }
 
@@ -110,8 +111,8 @@ class Character {
 		}
 		else {
 			this.image = source;
-			this.width = source.width;
-			this.height = source.height;
+			this.width = source.width * 0.66;
+			this.height = source.height * 0.66;
 		}
 
 		if (!this.hasVelocity) {
@@ -144,7 +145,7 @@ class Character {
 			}
 		}
 		else {
-			c.drawImage(this.image, this.position.x - (this.width * 0.66) / 2, this.position.y, this.width * 0.66, this.height * 0.66);
+			c.drawImage(this.image, this.position.x - this.width / 2, this.position.y, this.width, this.height);
 		}
 
 		if (!this.hasVelocity) {
@@ -157,11 +158,12 @@ class Character {
 
         this.position.x += this.velocity.x;
 		
-		if (this.hasVelocity) {
-			this.position.y += this.velocity.y;
-			if (this.position.y + this.height + this.velocity.y <= canvas.height) {
-				this.velocity.y += gravity;
-			}
+		this.position.y += this.velocity.y;
+		if (!this.hasVelocity) {
+			this.flyingText.move({x: 0, y: this.velocity.y});
+		}
+		if (this.position.y + this.height + this.velocity.y <= canvas.height) {
+			this.velocity.y += gravity;
 		}
     }
 }
@@ -301,11 +303,11 @@ class Enemy extends Character {
 			
 			if (this.player.position.x < this.position.x) {
 				this.position.x -= this.speed;
-				this.flyingText.move(-this.speed);
+				this.flyingText.move({x: -this.speed, y: 0});
 			}
 			else {
 				this.position.x += this.speed;
-				this.flyingText.move(this.speed);
+				this.flyingText.move({x: this.speed, y: 0});
 			}
 			
 			const distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
@@ -493,33 +495,34 @@ function init() {
 		new CharacterItem(ak47Image, player, {x: 50, y: 40}, 0.3),
 	]
 
+	let enemyY = canvas.height - platformImage.height - 500;
 	enemies = [
-		new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-		new Enemy(enemy1, {x: 2000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 1800, y: enemyY}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 2000, y: enemyY}, player, 1, enemy1MaxHealth, true, enemySpeed),
 		
-		new Enemy(enemy5, {x: 3500, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-		new Enemy(enemy5, {x: 3700, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-		new Enemy(enemy5, {x: 3900, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-		new Enemy(enemy5, {x: 4100, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 3500, y: enemyY}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 3700, y: enemyY}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 3900, y: enemyY}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 4100, y: enemyY}, player, 1, enemy5MaxHealth, true, enemySpeed),
 		
-		new Enemy(enemy6, {x: 5600, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
-		new Enemy(enemy6, {x: 5800, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
-		new Enemy(enemy1, {x: 6000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-		new Enemy(enemy1, {x: 6200, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy6, {x: 5600, y: enemyY}, player, 1, enemy6MaxHealth, true, enemySpeed),
+		new Enemy(enemy6, {x: 5800, y: enemyY}, player, 1, enemy6MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 6000, y: enemyY}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 6200, y: enemyY}, player, 1, enemy1MaxHealth, true, enemySpeed),
 		
-		new Enemy(enemy2, {x: 7500, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-		new Enemy(enemy2, {x: 7700, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-		new Enemy(enemy2, {x: 7900, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-		new Enemy(enemy3, {x: 8100, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
-		new Enemy(enemy3, {x: 8300, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy2, {x: 7500, y: enemyY}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy2, {x: 7700, y: enemyY}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy2, {x: 7900, y: enemyY}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 8100, y: enemyY}, player, 2, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 8300, y: enemyY}, player, 2, enemy3MaxHealth, true, enemySpeed),
 		
-		new Enemy(enemy3, {x: 9800, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
-		new Enemy(enemy3, {x: 10000, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
-		new Enemy(enemy4, {x: 10200, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
-		new Enemy(enemy4, {x: 10400, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
-		new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 9800, y: enemyY}, player, 3, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 10000, y: enemyY}, player, 3, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10200, y: enemyY}, player, 3, enemy4MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10400, y: enemyY}, player, 3, enemy4MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10600, y: enemyY}, player, 3, enemy4MaxHealth, true, enemySpeed),
 		
-		new Enemy(bossImage, {x: 12500, y: 290}, player, 15, bossMaxHealth, false, bossSpeed),
+		new Enemy(bossImage, {x: 12500, y: enemyY - 500}, player, 15, bossMaxHealth, false, bossSpeed),
 	]
 	
 	chapterTexts = [
@@ -583,7 +586,7 @@ function animate() {
 	c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 260, 50);
 	c.fillText('Убито: ' + kills, 260, 80);
 	let time = new Date() - startTime;
-	c.fillText('Время: ' + Math.floor((time % (1000 * 60)) / 1000), 260, 110);
+	c.fillText('Время: ' + Math.floor((time / 1000)), 260, 110);
 	
 	c.font = '36px Arial';
 	c.fillStyle = 'black';
@@ -620,7 +623,7 @@ function animate() {
             });
 			enemies.forEach(enemy => {
 				enemy.position.x -= player.speed;
-				enemy.flyingText.move(-player.speed);
+				enemy.flyingText.move({x: -player.speed, y: 0});
 			});
         }
         else if (keys.left.pressed && scrollOffset > 0) {
@@ -633,23 +636,24 @@ function animate() {
             });
 			enemies.forEach(enemy => {
 				enemy.position.x += player.speed;
-				enemy.flyingText.move(player.speed);
+				enemy.flyingText.move({x: player.speed, y: 0});
 			});
         }
     }
 
-	const platformCondition = platform => player.position.y + player.height <= platform.position.y
-            && player.position.y + player.height + player.velocity.y >= platform.position.y
-            && player.position.x + player.width >= platform.position.x
-            && player.position.x <= platform.position.x + platform.width;
-
-	if (platforms.filter(platformCondition).length > 0) {
+	if (checkCollision(player)) {
 		player.velocity.y = 0;
 		player.onGround = true;
 	}
 	else {
 		player.onGround = false;
 	}
+	
+	enemies.forEach(enemy => {
+		if (checkCollision(enemy)) {
+			enemy.velocity.y = 0;
+		}
+	});
 
     if (enemies.length === 0) {
         gameIsOver = true;
@@ -664,13 +668,20 @@ function animate() {
     }
 }
 
-
+function checkCollision(entity) {
+	const platformCondition = platform => entity.position.y + entity.height <= platform.position.y
+            && entity.position.y + entity.height + entity.velocity.y >= platform.position.y
+            && entity.position.x + entity.width >= platform.position.x
+            && entity.position.x <= platform.position.x + platform.width;
+	return platforms.filter(platformCondition).length > 0;
+}
 
 let keyed = false;
 
 addEventListener('keydown', ({ keyCode }) => {
 	if (!keyed) {
 		keyed = true;
+		startTime = new Date();
 		
 		init();
 		animate();
@@ -715,4 +726,5 @@ addEventListener('keyup', ({ keyCode }) => {
     }
 })
 
-c.fillText('Нажмите любую клавишу чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);
+c.fillText('Работает только на ПК', canvas.width / 2 - 150, canvas.height / 2 - 50);
+c.fillText('Нажмите SPACE чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);

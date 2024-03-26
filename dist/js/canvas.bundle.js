@@ -376,8 +376,8 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 1600;
+canvas.height = 900;
 var gravity = 1.5;
 var playerSpeed = 10;
 var enemySpeed = 3;
@@ -416,7 +416,8 @@ var FlyingText = /*#__PURE__*/function () {
   }, {
     key: "move",
     value: function move(offset) {
-      this.position.x += offset;
+      this.position.x += offset.x;
+      this.position.y += offset.y;
     }
   }]);
 }();
@@ -447,8 +448,8 @@ var Character = /*#__PURE__*/function () {
       };
     } else {
       this.image = source;
-      this.width = source.width;
-      this.height = source.height;
+      this.width = source.width * 0.66;
+      this.height = source.height * 0.66;
     }
     if (!this.hasVelocity) {
       this.flyingText = new FlyingText({
@@ -490,7 +491,7 @@ var Character = /*#__PURE__*/function () {
           c.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
         }
       } else {
-        c.drawImage(this.image, this.position.x - this.width * 0.66 / 2, this.position.y, this.width * 0.66, this.height * 0.66);
+        c.drawImage(this.image, this.position.x - this.width / 2, this.position.y, this.width, this.height);
       }
       if (!this.hasVelocity) {
         this.flyingText.update(this.health + '/' + this.maxHealth);
@@ -501,11 +502,15 @@ var Character = /*#__PURE__*/function () {
     value: function update() {
       requestAnimationFrame(this.updateCanvas.bind(this));
       this.position.x += this.velocity.x;
-      if (this.hasVelocity) {
-        this.position.y += this.velocity.y;
-        if (this.position.y + this.height + this.velocity.y <= canvas.height) {
-          this.velocity.y += gravity;
-        }
+      this.position.y += this.velocity.y;
+      if (!this.hasVelocity) {
+        this.flyingText.move({
+          x: 0,
+          y: this.velocity.y
+        });
+      }
+      if (this.position.y + this.height + this.velocity.y <= canvas.height) {
+        this.velocity.y += gravity;
       }
     }
   }]);
@@ -638,10 +643,16 @@ var Enemy = /*#__PURE__*/function (_Character2) {
         }
         if (this.player.position.x < this.position.x) {
           this.position.x -= this.speed;
-          this.flyingText.move(-this.speed);
+          this.flyingText.move({
+            x: -this.speed,
+            y: 0
+          });
         } else {
           this.position.x += this.speed;
-          this.flyingText.move(this.speed);
+          this.flyingText.move({
+            x: this.speed,
+            y: 0
+          });
         }
         var distanceToPlayerX = Math.abs(this.player.position.x - this.position.x);
         var distanceToPlayerY = Math.abs(this.player.position.y - this.position.y);
@@ -890,69 +901,70 @@ function init() {
     x: 50,
     y: 40
   }, 0.3)];
+  var enemyY = canvas.height - platformImage.height - 500;
   enemies = [new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
     x: 1800,
-    y: 472
+    y: enemyY
   }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
     x: 2000,
-    y: 472
+    y: enemyY
   }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
     x: 3500,
-    y: 472
+    y: enemyY
   }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
     x: 3700,
-    y: 472
+    y: enemyY
   }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
     x: 3900,
-    y: 472
+    y: enemyY
   }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
     x: 4100,
-    y: 472
+    y: enemyY
   }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_12__["default"], {
     x: 5600,
-    y: 472
+    y: enemyY
   }, player, 1, enemy6MaxHealth, true, enemySpeed), new Enemy(_vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_12__["default"], {
     x: 5800,
-    y: 472
+    y: enemyY
   }, player, 1, enemy6MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
     x: 6000,
-    y: 472
+    y: enemyY
   }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
     x: 6200,
-    y: 472
+    y: enemyY
   }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
     x: 7500,
-    y: 472
+    y: enemyY
   }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
     x: 7700,
-    y: 472
+    y: enemyY
   }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
     x: 7900,
-    y: 472
+    y: enemyY
   }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
     x: 8100,
-    y: 472
+    y: enemyY
   }, player, 2, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
     x: 8300,
-    y: 472
+    y: enemyY
   }, player, 2, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
     x: 9800,
-    y: 472
+    y: enemyY
   }, player, 3, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
     x: 10000,
-    y: 472
+    y: enemyY
   }, player, 3, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
     x: 10200,
-    y: 472
+    y: enemyY
   }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
     x: 10400,
-    y: 472
+    y: enemyY
   }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
     x: 10600,
-    y: 472
+    y: enemyY
   }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(bossImage, {
     x: 12500,
-    y: 290
+    y: enemyY - 500
   }, player, 15, bossMaxHealth, false, bossSpeed)];
   chapterTexts = [{
     x: 1300,
@@ -1014,7 +1026,7 @@ function animate() {
   c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 260, 50);
   c.fillText('Убито: ' + kills, 260, 80);
   var time = new Date() - startTime;
-  c.fillText('Время: ' + Math.floor(time % (1000 * 60) / 1000), 260, 110);
+  c.fillText('Время: ' + Math.floor(time / 1000), 260, 110);
   c.font = '36px Arial';
   c.fillStyle = 'black';
   var index = 1;
@@ -1044,7 +1056,10 @@ function animate() {
       });
       enemies.forEach(function (enemy) {
         enemy.position.x -= player.speed;
-        enemy.flyingText.move(-player.speed);
+        enemy.flyingText.move({
+          x: -player.speed,
+          y: 0
+        });
       });
     } else if (keys.left.pressed && scrollOffset > 0) {
       scrollOffset -= player.speed;
@@ -1056,19 +1071,24 @@ function animate() {
       });
       enemies.forEach(function (enemy) {
         enemy.position.x += player.speed;
-        enemy.flyingText.move(player.speed);
+        enemy.flyingText.move({
+          x: player.speed,
+          y: 0
+        });
       });
     }
   }
-  var platformCondition = function platformCondition(platform) {
-    return player.position.y + player.height <= platform.position.y && player.position.y + player.height + player.velocity.y >= platform.position.y && player.position.x + player.width >= platform.position.x && player.position.x <= platform.position.x + platform.width;
-  };
-  if (platforms.filter(platformCondition).length > 0) {
+  if (checkCollision(player)) {
     player.velocity.y = 0;
     player.onGround = true;
   } else {
     player.onGround = false;
   }
+  enemies.forEach(function (enemy) {
+    if (checkCollision(enemy)) {
+      enemy.velocity.y = 0;
+    }
+  });
   if (enemies.length === 0) {
     gameIsOver = true;
     requestAnimationFrame(function () {
@@ -1080,11 +1100,18 @@ function animate() {
     player.velocity.y = 0;
   }
 }
+function checkCollision(entity) {
+  var platformCondition = function platformCondition(platform) {
+    return entity.position.y + entity.height <= platform.position.y && entity.position.y + entity.height + entity.velocity.y >= platform.position.y && entity.position.x + entity.width >= platform.position.x && entity.position.x <= platform.position.x + platform.width;
+  };
+  return platforms.filter(platformCondition).length > 0;
+}
 var keyed = false;
 addEventListener('keydown', function (_ref3) {
   var keyCode = _ref3.keyCode;
   if (!keyed) {
     keyed = true;
+    startTime = new Date();
     init();
     animate();
     player.videoContainer.video.play();
@@ -1133,7 +1160,8 @@ addEventListener('keyup', function (_ref4) {
       break;
   }
 });
-c.fillText('Нажмите любую клавишу чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);
+c.fillText('Работает только на ПК', canvas.width / 2 - 150, canvas.height / 2 - 50);
+c.fillText('Нажмите SPACE чтобы начать...', canvas.width / 2 - 200, canvas.height / 2);
 })();
 
 /******/ })()
