@@ -494,7 +494,7 @@ function init() {
 	]
 
 	enemies = [
-		/*new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
 		new Enemy(enemy1, {x: 2000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
 		
 		new Enemy(enemy5, {x: 3500, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
@@ -517,7 +517,7 @@ function init() {
 		new Enemy(enemy3, {x: 10000, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
 		new Enemy(enemy4, {x: 10200, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
 		new Enemy(enemy4, {x: 10400, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
-		new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),*/
+		new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
 		
 		new Enemy(bossImage, {x: 12500, y: 290}, player, 15, bossMaxHealth, false, bossSpeed),
 	]
