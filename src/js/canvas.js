@@ -7,6 +7,12 @@ import ak47 from '../img/ak47.png'
 
 // video
 import character from '../vid/character.webm'
+import enemy1 from '../vid/enemy1.webm'
+import enemy2 from '../vid/enemy2.webm'
+import enemy3 from '../vid/enemy3.webm'
+import enemy4 from '../vid/enemy4.webm'
+import enemy5 from '../vid/enemy5.webm'
+import enemy6 from '../vid/enemy6.webm'
 
 // audio
 import death from '../aud/death.mp3'
@@ -45,7 +51,7 @@ class FlyingText {
 	constructor(position) {
 		this.position = position;
 		 
-		c.fillText('test', this.position.x, this.position.y);
+		c.fillText('', this.position.x, this.position.y);
 	}
 	
 	update(text) {
@@ -376,6 +382,8 @@ let enemies = []
 
 let characterItems = []
 
+let flyingTexts = []
+
 let keys = {
     right: {
         pressed: false
@@ -411,9 +419,9 @@ function init() {
     ]
     genericObjects = [
         new GenericObject({x: -1, y: -1, image: createImage(background)}),
-        new GenericObject({x: -1, y: 70, image: createImage(background)}),
-        new GenericObject({x: -1, y: 100, image: createImage(hills)}),
-        new GenericObject({x: 1000, y: 100, image: createImage(hills)}),
+        //new GenericObject({x: -1, y: 70, image: createImage(background)}),
+        //new GenericObject({x: -1, y: 100, image: createImage(hills)}),
+        //new GenericObject({x: 1000, y: 100, image: createImage(hills)}),
     ]
  
 	characterItems = [
@@ -424,7 +432,11 @@ function init() {
 		new Enemy(character, {x: 1500, y: 472}, player, 1),
 		new Enemy(character, {x: 1800, y: 472}, player, 1),
 	]
-
+	
+	flyingTexts = [
+		new FlyingText({x: 1500, y: 100}).update('123'),
+	]
+	
 	enemies.forEach(enemy => {
 		enemy.setEnemiesArray(enemies);
 	});

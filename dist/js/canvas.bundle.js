@@ -26,7 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/072d51bcc9c09311d4c2a6708b05bddc.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/bbf270f81097921a4a65245547040d94.png");
 
 /***/ }),
 
@@ -83,6 +83,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/8485fe750a287aa83507f4a7e3f28900.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy1.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy1.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/c1ea582eedfdd0641ca51f4527032578.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy2.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy2.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/5dad546d30fe187bb74799201ab958b6.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy3.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy3.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/2a922b1041ef799825ca094afd914439.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy4.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy4.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/a3e8831e7a8e6c4b8e92de640941429e.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy5.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy5.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/8b8eeeab86e1507ec5f910273e0cd29b.webm");
+
+/***/ }),
+
+/***/ "./src/vid/enemy6.webm":
+/*!*****************************!*\
+  !*** ./src/vid/enemy6.webm ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "videos/6afc69207f82c8f8578a3fa06a833a69.webm");
 
 /***/ }),
 
@@ -218,8 +302,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_background_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/background.png */ "./src/img/background.png");
 /* harmony import */ var _img_ak47_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/ak47.png */ "./src/img/ak47.png");
 /* harmony import */ var _vid_character_webm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../vid/character.webm */ "./src/vid/character.webm");
-/* harmony import */ var _aud_death_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../aud/death.mp3 */ "./src/aud/death.mp3");
-/* harmony import */ var _aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../aud/take_damage.mp3 */ "./src/aud/take_damage.mp3");
+/* harmony import */ var _vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../vid/enemy1.webm */ "./src/vid/enemy1.webm");
+/* harmony import */ var _vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../vid/enemy2.webm */ "./src/vid/enemy2.webm");
+/* harmony import */ var _vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../vid/enemy3.webm */ "./src/vid/enemy3.webm");
+/* harmony import */ var _vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../vid/enemy4.webm */ "./src/vid/enemy4.webm");
+/* harmony import */ var _vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../vid/enemy5.webm */ "./src/vid/enemy5.webm");
+/* harmony import */ var _vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../vid/enemy6.webm */ "./src/vid/enemy6.webm");
+/* harmony import */ var _aud_death_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../aud/death.mp3 */ "./src/aud/death.mp3");
+/* harmony import */ var _aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../aud/take_damage.mp3 */ "./src/aud/take_damage.mp3");
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -243,6 +333,12 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 // video
 
 
+
+
+
+
+
+
 // audio
 
 
@@ -264,8 +360,8 @@ c.font = '24px Arial';
 c.fillStyle = 'white';
 
 // audio
-var deathAudio = new Audio(_aud_death_mp3__WEBPACK_IMPORTED_MODULE_6__["default"]);
-var takeDamageAudio = new Audio(_aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_7__["default"]);
+var deathAudio = new Audio(_aud_death_mp3__WEBPACK_IMPORTED_MODULE_12__["default"]);
+var takeDamageAudio = new Audio(_aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_13__["default"]);
 var FlyingText = /*#__PURE__*/function () {
   function FlyingText(position) {
     _classCallCheck(this, FlyingText);
@@ -643,19 +739,11 @@ function init() {
     x: -1,
     y: -1,
     image: createImage(_img_background_png__WEBPACK_IMPORTED_MODULE_3__["default"])
-  }), new GenericObject({
-    x: -1,
-    y: 70,
-    image: createImage(_img_background_png__WEBPACK_IMPORTED_MODULE_3__["default"])
-  }), new GenericObject({
-    x: -1,
-    y: 100,
-    image: createImage(_img_hills_png__WEBPACK_IMPORTED_MODULE_2__["default"])
-  }), new GenericObject({
-    x: 1000,
-    y: 100,
-    image: createImage(_img_hills_png__WEBPACK_IMPORTED_MODULE_2__["default"])
-  })];
+  })
+  //new GenericObject({x: -1, y: 70, image: createImage(background)}),
+  //new GenericObject({x: -1, y: 100, image: createImage(hills)}),
+  //new GenericObject({x: 1000, y: 100, image: createImage(hills)}),
+  ];
   characterItems = [new CharacterItem(ak47Image, player, {
     x: 50,
     y: 40
