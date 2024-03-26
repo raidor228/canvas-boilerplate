@@ -474,8 +474,6 @@ var Enemy = /*#__PURE__*/function (_Character2) {
   return _createClass(Enemy, [{
     key: "moveToPlayer",
     value: function moveToPlayer() {
-      console.log(Math.abs(player.position.x - this.position.x));
-      console.log(canvas.width);
       if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
         if (this.player.position.x < this.position.x) {
           this.position.x -= this.speed;
