@@ -890,33 +890,67 @@ function init() {
     x: 50,
     y: 40
   }, 0.3)];
-  enemies = [
-  /*new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-  new Enemy(enemy1, {x: 2000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-  
-  new Enemy(enemy5, {x: 3500, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-  new Enemy(enemy5, {x: 3700, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-  new Enemy(enemy5, {x: 3900, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-  new Enemy(enemy5, {x: 4100, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
-  
-  new Enemy(enemy6, {x: 5600, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
-  new Enemy(enemy6, {x: 5800, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
-  new Enemy(enemy1, {x: 6000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-  new Enemy(enemy1, {x: 6200, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
-  
-  new Enemy(enemy2, {x: 7500, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-  new Enemy(enemy2, {x: 7700, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-  new Enemy(enemy2, {x: 7900, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
-  new Enemy(enemy3, {x: 8100, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
-  new Enemy(enemy3, {x: 8300, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
-  
-  new Enemy(enemy3, {x: 9800, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
-  new Enemy(enemy3, {x: 10000, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
-  new Enemy(enemy4, {x: 10200, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
-  new Enemy(enemy4, {x: 10400, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
-  new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),*/
-
-  new Enemy(bossImage, {
+  enemies = [new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    x: 1800,
+    y: 472
+  }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    x: 2000,
+    y: 472
+  }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    x: 3500,
+    y: 472
+  }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    x: 3700,
+    y: 472
+  }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    x: 3900,
+    y: 472
+  }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    x: 4100,
+    y: 472
+  }, player, 1, enemy5MaxHealth, true, enemySpeed), new Enemy(_vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    x: 5600,
+    y: 472
+  }, player, 1, enemy6MaxHealth, true, enemySpeed), new Enemy(_vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    x: 5800,
+    y: 472
+  }, player, 1, enemy6MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    x: 6000,
+    y: 472
+  }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    x: 6200,
+    y: 472
+  }, player, 1, enemy1MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    x: 7500,
+    y: 472
+  }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    x: 7700,
+    y: 472
+  }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    x: 7900,
+    y: 472
+  }, player, 2, enemy2MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    x: 8100,
+    y: 472
+  }, player, 2, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    x: 8300,
+    y: 472
+  }, player, 2, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    x: 9800,
+    y: 472
+  }, player, 3, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    x: 10000,
+    y: 472
+  }, player, 3, enemy3MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    x: 10200,
+    y: 472
+  }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    x: 10400,
+    y: 472
+  }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(_vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    x: 10600,
+    y: 472
+  }, player, 3, enemy4MaxHealth, true, enemySpeed), new Enemy(bossImage, {
     x: 12500,
     y: 290
   }, player, 15, bossMaxHealth, false, bossSpeed)];
