@@ -30,6 +30,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/img/boss.png":
+/*!**************************!*\
+  !*** ./src/img/boss.png ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/a7511d59c39ff7a8e1520073ca29210e.png");
+
+/***/ }),
+
 /***/ "./src/img/hills.png":
 /*!***************************!*\
   !*** ./src/img/hills.png ***!
@@ -170,6 +184,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/aud/boss_fight.mp3":
+/*!********************************!*\
+  !*** ./src/aud/boss_fight.mp3 ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "audio/b4fe4b554bd75d35dde28e83781c8cc8.mp3");
+
+/***/ }),
+
 /***/ "./src/aud/death.mp3":
 /*!***************************!*\
   !*** ./src/aud/death.mp3 ***!
@@ -301,15 +329,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_hills_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/hills.png */ "./src/img/hills.png");
 /* harmony import */ var _img_background_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/background.png */ "./src/img/background.png");
 /* harmony import */ var _img_ak47_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/ak47.png */ "./src/img/ak47.png");
-/* harmony import */ var _vid_character_webm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../vid/character.webm */ "./src/vid/character.webm");
-/* harmony import */ var _vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../vid/enemy1.webm */ "./src/vid/enemy1.webm");
-/* harmony import */ var _vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../vid/enemy2.webm */ "./src/vid/enemy2.webm");
-/* harmony import */ var _vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../vid/enemy3.webm */ "./src/vid/enemy3.webm");
-/* harmony import */ var _vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../vid/enemy4.webm */ "./src/vid/enemy4.webm");
-/* harmony import */ var _vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../vid/enemy5.webm */ "./src/vid/enemy5.webm");
-/* harmony import */ var _vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../vid/enemy6.webm */ "./src/vid/enemy6.webm");
-/* harmony import */ var _aud_death_mp3__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../aud/death.mp3 */ "./src/aud/death.mp3");
-/* harmony import */ var _aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../aud/take_damage.mp3 */ "./src/aud/take_damage.mp3");
+/* harmony import */ var _img_boss_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/boss.png */ "./src/img/boss.png");
+/* harmony import */ var _vid_character_webm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../vid/character.webm */ "./src/vid/character.webm");
+/* harmony import */ var _vid_enemy1_webm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../vid/enemy1.webm */ "./src/vid/enemy1.webm");
+/* harmony import */ var _vid_enemy2_webm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../vid/enemy2.webm */ "./src/vid/enemy2.webm");
+/* harmony import */ var _vid_enemy3_webm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../vid/enemy3.webm */ "./src/vid/enemy3.webm");
+/* harmony import */ var _vid_enemy4_webm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../vid/enemy4.webm */ "./src/vid/enemy4.webm");
+/* harmony import */ var _vid_enemy5_webm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../vid/enemy5.webm */ "./src/vid/enemy5.webm");
+/* harmony import */ var _vid_enemy6_webm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../vid/enemy6.webm */ "./src/vid/enemy6.webm");
+/* harmony import */ var _aud_death_mp3__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../aud/death.mp3 */ "./src/aud/death.mp3");
+/* harmony import */ var _aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../aud/take_damage.mp3 */ "./src/aud/take_damage.mp3");
+/* harmony import */ var _aud_boss_fight_mp3__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../aud/boss_fight.mp3 */ "./src/aud/boss_fight.mp3");
 function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -330,6 +360,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 
+
 // video
 
 
@@ -342,6 +373,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 // audio
 
 
+
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = innerWidth;
@@ -349,8 +381,15 @@ canvas.height = innerHeight;
 var gravity = 1.5;
 var playerSpeed = 10;
 var enemySpeed = 3;
+var bossSpeed = 6;
 var playerMaxHealth = 20;
-var enemyMaxHealth = 2;
+var enemy1MaxHealth = 2;
+var enemy2MaxHealth = 6;
+var enemy3MaxHealth = 8;
+var enemy4MaxHealth = 10;
+var enemy5MaxHealth = 4;
+var enemy6MaxHealth = 4;
+var bossMaxHealth = 50;
 var attackInterval = 750;
 var minDistanceToAttackX = 150;
 var minDistanceToAttackY = 250;
@@ -360,13 +399,14 @@ c.font = '24px Arial';
 c.fillStyle = 'white';
 
 // audio
-var deathAudio = new Audio(_aud_death_mp3__WEBPACK_IMPORTED_MODULE_12__["default"]);
-var takeDamageAudio = new Audio(_aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_13__["default"]);
+var deathAudio = new Audio(_aud_death_mp3__WEBPACK_IMPORTED_MODULE_13__["default"]);
+var takeDamageAudio = new Audio(_aud_take_damage_mp3__WEBPACK_IMPORTED_MODULE_14__["default"]);
+var bossFightAudio = new Audio(_aud_boss_fight_mp3__WEBPACK_IMPORTED_MODULE_15__["default"]);
 var FlyingText = /*#__PURE__*/function () {
   function FlyingText(position) {
     _classCallCheck(this, FlyingText);
     this.position = position;
-    c.fillText('test', this.position.x, this.position.y);
+    c.fillText('', this.position.x, this.position.y);
   }
   return _createClass(FlyingText, [{
     key: "update",
@@ -383,24 +423,33 @@ var FlyingText = /*#__PURE__*/function () {
 var Character = /*#__PURE__*/function () {
   function Character(source, startPosition, hasVelocity, speed, maxHealth) {
     var _this = this;
+    var isVideo = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
     _classCallCheck(this, Character);
+    this.isVideo = isVideo;
     this.startPosition = startPosition;
     this.speed = speed;
     this.health = maxHealth;
+    this.maxHealth = maxHealth;
     this.onGround = false;
     this.reset();
     this.hasVelocity = hasVelocity;
-    this.video = document.createElement("video");
-    this.video.src = source;
-    this.video.autoPlay = false;
-    this.video.loop = true;
-    this.videoContainer = {
-      video: this.video,
-      ready: false
-    };
-    this.video.oncanplay = function () {
-      return _this.readyToPlayVideo();
-    };
+    if (this.isVideo) {
+      this.video = document.createElement("video");
+      this.video.src = source;
+      this.video.autoPlay = false;
+      this.video.loop = true;
+      this.videoContainer = {
+        video: this.video,
+        ready: false
+      };
+      this.video.oncanplay = function () {
+        return _this.readyToPlayVideo();
+      };
+    } else {
+      this.image = source;
+      this.width = source.width;
+      this.height = source.height;
+    }
     if (!this.hasVelocity) {
       this.flyingText = new FlyingText({
         x: this.position.x,
@@ -428,19 +477,23 @@ var Character = /*#__PURE__*/function () {
   }, {
     key: "updateCanvas",
     value: function updateCanvas() {
-      if (this.videoContainer.video.paused) {
-        return;
-      }
-      if (this.videoContainer !== undefined && this.videoContainer.ready) {
-        var scale = this.videoContainer.scale;
-        var vidH = this.videoContainer.video.videoHeight;
-        var vidW = this.videoContainer.video.videoWidth;
-        var top = this.position.y;
-        var left = this.position.x;
-        c.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
+      if (this.isVideo) {
+        if (this.videoContainer.video.paused) {
+          return;
+        }
+        if (this.videoContainer !== undefined && this.videoContainer.ready) {
+          var scale = this.videoContainer.scale;
+          var vidH = this.videoContainer.video.videoHeight;
+          var vidW = this.videoContainer.video.videoWidth;
+          var top = this.position.y;
+          var left = this.position.x;
+          c.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
+        }
+      } else {
+        c.drawImage(this.image, this.position.x - this.width * 0.66 / 2, this.position.y, this.width * 0.66, this.height * 0.66);
       }
       if (!this.hasVelocity) {
-        this.flyingText.update(this.health + '/' + enemyMaxHealth);
+        this.flyingText.update(this.health + '/' + this.maxHealth);
       }
     }
   }, {
@@ -553,12 +606,15 @@ var Player = /*#__PURE__*/function (_Character) {
   }]);
 }(Character);
 var Enemy = /*#__PURE__*/function (_Character2) {
-  function Enemy(source, startPosition, player, damage) {
+  function Enemy(source, startPosition, player, damage, health, isVideo, speed) {
     var _this2;
     _classCallCheck(this, Enemy);
-    _this2 = _callSuper(this, Enemy, [source, startPosition, false, enemySpeed, enemyMaxHealth]);
+    _this2 = _callSuper(this, Enemy, [source, startPosition, false, speed, health, isVideo]);
     _this2.player = player;
-    _this2.video.muted = true;
+    if (isVideo) {
+      _this2.video.muted = true;
+    }
+    _this2.audioIsPlaying = false;
     _this2.damage = damage;
     _this2.attackInterval = attackInterval;
     _this2.lastAttackTime = 0;
@@ -571,6 +627,15 @@ var Enemy = /*#__PURE__*/function (_Character2) {
     key: "moveToPlayer",
     value: function moveToPlayer() {
       if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
+        if (this.isVideo) {
+          this.video.muted = false;
+        }
+        if (!this.isVideo) {
+          if (this.image == bossImage && !this.audioIsPlaying) {
+            play_audio(bossFightAudio);
+            this.audioIsPlaying = true;
+          }
+        }
         if (this.player.position.x < this.position.x) {
           this.position.x -= this.speed;
           this.flyingText.move(-this.speed);
@@ -583,6 +648,10 @@ var Enemy = /*#__PURE__*/function (_Character2) {
         if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
           this.player.takeDamage(this.damage);
           this.lastAttackTime = Date.now();
+        }
+      } else {
+        if (this.isVideo) {
+          this.video.muted = true;
         }
       }
     }
@@ -611,6 +680,9 @@ var Enemy = /*#__PURE__*/function (_Character2) {
     key: "removeEnemy",
     value: function removeEnemy() {
       canvas.removeEventListener('click', this.handleClick);
+      if (this.isVideo) {
+        this.video.muted = true;
+      }
       var index = this.enemiesArray.indexOf(this);
       if (index !== -1) {
         play_audio(deathAudio);
@@ -685,11 +757,13 @@ function createImage(imageSrc) {
 var platformImage = createImage(_img_platform_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var platformSmallTallImage = createImage(_img_platformSmallTall_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var ak47Image = createImage(_img_ak47_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var player = new Player(_vid_character_webm__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var bossImage = createImage(_img_boss_png__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var player = new Player(_vid_character_webm__WEBPACK_IMPORTED_MODULE_6__["default"]);
 var platforms = [];
 var genericObjects = [];
 var enemies = [];
 var characterItems = [];
+var chapterTexts = [];
 var keys = {
   right: {
     pressed: false
@@ -734,27 +808,137 @@ function init() {
     x: platformImage.width * 5 - 3 * 5,
     y: 670,
     image: platformImage
+  }), new Platform({
+    x: platformImage.width * 6 - 3 * 6,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 7 - 3 * 7,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 8 - 3 * 8,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 9 - 3 * 9,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 10 - 3 * 10,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 11 - 3 * 11,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 12 - 3 * 12,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 13 - 3 * 13,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 14 - 3 * 14,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 15 - 3 * 15,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 16 - 3 * 16,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 17 - 3 * 17,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 18 - 3 * 18,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 19 - 3 * 19,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 20 - 3 * 20,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 21 - 3 * 21,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 22 - 3 * 22,
+    y: 670,
+    image: platformImage
+  }), new Platform({
+    x: platformImage.width * 23 - 3 * 23,
+    y: 670,
+    image: platformImage
   })];
   genericObjects = [new GenericObject({
     x: -1,
     y: -1,
     image: createImage(_img_background_png__WEBPACK_IMPORTED_MODULE_3__["default"])
-  })
-  //new GenericObject({x: -1, y: 70, image: createImage(background)}),
-  //new GenericObject({x: -1, y: 100, image: createImage(hills)}),
-  //new GenericObject({x: 1000, y: 100, image: createImage(hills)}),
-  ];
+  })];
   characterItems = [new CharacterItem(ak47Image, player, {
     x: 50,
     y: 40
   }, 0.3)];
-  enemies = [new Enemy(_vid_character_webm__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    x: 1500,
-    y: 472
-  }, player, 1), new Enemy(_vid_character_webm__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    x: 1800,
-    y: 472
-  }, player, 1)];
+  enemies = [
+  /*new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+  new Enemy(enemy1, {x: 2000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+  
+  new Enemy(enemy5, {x: 3500, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+  new Enemy(enemy5, {x: 3700, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+  new Enemy(enemy5, {x: 3900, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+  new Enemy(enemy5, {x: 4100, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+  
+  new Enemy(enemy6, {x: 5600, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
+  new Enemy(enemy6, {x: 5800, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
+  new Enemy(enemy1, {x: 6000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+  new Enemy(enemy1, {x: 6200, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+  
+  new Enemy(enemy2, {x: 7500, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+  new Enemy(enemy2, {x: 7700, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+  new Enemy(enemy2, {x: 7900, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+  new Enemy(enemy3, {x: 8100, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
+  new Enemy(enemy3, {x: 8300, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
+  
+  new Enemy(enemy3, {x: 9800, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
+  new Enemy(enemy3, {x: 10000, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
+  new Enemy(enemy4, {x: 10200, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
+  new Enemy(enemy4, {x: 10400, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
+  new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),*/
+
+  new Enemy(bossImage, {
+    x: 12500,
+    y: 290
+  }, player, 15, bossMaxHealth, false, bossSpeed)];
+  chapterTexts = [{
+    x: 1300,
+    y: 100
+  }, {
+    x: 3000,
+    y: 100
+  }, {
+    x: 5100,
+    y: 100
+  }, {
+    x: 7200,
+    y: 100
+  }, {
+    x: 9300,
+    y: 100
+  }, {
+    x: 11600,
+    y: 100
+  }];
   enemies.forEach(function (enemy) {
     enemy.setEnemiesArray(enemies);
   });
@@ -787,22 +971,36 @@ function animate() {
   characterItems.forEach(function (item) {
     item.draw();
   });
+  c.fillStyle = 'white';
   c.fillText('Управление', 35, 50);
   c.fillText('W - прыжок', 35, 80);
   c.fillText('A - влево', 35, 110);
   c.fillText('D - вправо', 35, 140);
   c.fillText('Mouse1 - выстрел', 35, 170);
-  c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 220, 50);
-  c.fillText('Убито: ' + kills, 220, 80);
+  c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 260, 50);
+  c.fillText('Убито: ' + kills, 260, 80);
   var time = new Date() - startTime;
-  c.fillText('Время: ' + Math.floor(time % (1000 * 60) / 1000), 220, 110);
+  c.fillText('Время: ' + Math.floor(time % (1000 * 60) / 1000), 260, 110);
+  c.font = '36px Arial';
+  c.fillStyle = 'black';
+  var index = 1;
+  var bossIndex = 6;
+  chapterTexts.forEach(function (text) {
+    if (index !== bossIndex) {
+      c.fillText('Волна №' + index, text.x - scrollOffset, text.y);
+    } else {
+      c.fillText('БОСС', text.x - scrollOffset, text.y);
+    }
+    index++;
+  });
+  c.fillStyle = 'white';
   if (keys.right.pressed && player.position.x < 600) {
     player.velocity.x = player.speed;
   } else if (keys.left.pressed && player.position.x > 400 || keys.left.pressed && scrollOffset === 0 && player.position.x > 0) {
     player.velocity.x = -player.speed;
   } else {
     player.velocity.x = 0;
-    if (keys.right.pressed) {
+    if (keys.right.pressed && scrollOffset < 12000) {
       scrollOffset += player.speed;
       platforms.forEach(function (platform) {
         platform.position.x -= player.speed;
@@ -857,7 +1055,9 @@ addEventListener('keydown', function (_ref3) {
     animate();
     player.videoContainer.video.play();
     enemies.forEach(function (enemy) {
-      enemy.videoContainer.video.play();
+      if (enemy.isVideo) {
+        enemy.videoContainer.video.play();
+      }
     });
   }
   switch (keyCode) {

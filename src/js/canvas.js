@@ -4,6 +4,7 @@ import platformSmallTall from '../img/platformSmallTall.png'
 import hills from '../img/hills.png'
 import background from '../img/background.png'
 import ak47 from '../img/ak47.png'
+import boss from '../img/boss.png'
 
 // video
 import character from '../vid/character.webm'
@@ -17,6 +18,7 @@ import enemy6 from '../vid/enemy6.webm'
 // audio
 import death from '../aud/death.mp3'
 import take_damage from '../aud/take_damage.mp3'
+import boss_fight from '../aud/boss_fight.mp3'
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -28,9 +30,16 @@ const gravity = 1.5;
 
 const playerSpeed = 10;
 const enemySpeed = 3;
+const bossSpeed = 6;
 
 const playerMaxHealth = 20;
-const enemyMaxHealth = 2;
+const enemy1MaxHealth = 2;
+const enemy2MaxHealth = 6;
+const enemy3MaxHealth = 8;
+const enemy4MaxHealth = 10;
+const enemy5MaxHealth = 4;
+const enemy6MaxHealth = 4;
+const bossMaxHealth = 50;
 
 const attackInterval = 750;
 const minDistanceToAttackX = 150;
@@ -46,6 +55,7 @@ c.fillStyle = 'white';
 // audio
 var deathAudio = new Audio(death);
 var takeDamageAudio = new Audio(take_damage);
+var bossFightAudio = new Audio(boss_fight);
 
 class FlyingText {
 	constructor(position) {
@@ -72,11 +82,14 @@ class Character {
         };
     }
 
-    constructor(source, startPosition, hasVelocity, speed, maxHealth) {
-        this.startPosition = startPosition;
+    constructor(source, startPosition, hasVelocity, speed, maxHealth, isVideo = true) {
+        this.isVideo = isVideo;
+		
+		this.startPosition = startPosition;
 		
 		this.speed = speed;
 		this.health = maxHealth;
+		this.maxHealth = maxHealth;
 		
 		this.onGround = false;
 		
@@ -84,16 +97,23 @@ class Character {
 
 		this.hasVelocity = hasVelocity;
 
-        this.video = document.createElement("video");
-        this.video.src = source;
-        this.video.autoPlay = false;
-        this.video.loop = true;
-        this.videoContainer = {
-            video : this.video,
-            ready : false,
-        };
-        this.video.oncanplay = () => this.readyToPlayVideo();
- 
+		if (this.isVideo) {
+			this.video = document.createElement("video");
+			this.video.src = source;
+			this.video.autoPlay = false;
+			this.video.loop = true;
+			this.videoContainer = {
+				video : this.video,
+				ready : false,
+			};
+			this.video.oncanplay = () => this.readyToPlayVideo();
+		}
+		else {
+			this.image = source;
+			this.width = source.width;
+			this.height = source.height;
+		}
+
 		if (!this.hasVelocity) {
 			this.flyingText = new FlyingText({x: this.position.x, y: this.position.y - 20});
 		}
@@ -108,22 +128,27 @@ class Character {
     }
 
     updateCanvas() {
-		if (this.videoContainer.video.paused)
-		{
-			return;
+		if (this.isVideo) {
+			if (this.videoContainer.video.paused)
+			{
+				return;
+			}
+			
+			if(this.videoContainer !== undefined && this.videoContainer.ready){
+				var scale = this.videoContainer.scale;
+				var vidH = this.videoContainer.video.videoHeight;
+				var vidW = this.videoContainer.video.videoWidth;
+				var top = this.position.y;
+				var left = this.position.x;
+				c.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
+			}
 		}
-		
-        if(this.videoContainer !== undefined && this.videoContainer.ready){
-            var scale = this.videoContainer.scale;
-            var vidH = this.videoContainer.video.videoHeight;
-            var vidW = this.videoContainer.video.videoWidth;
-            var top = this.position.y;
-            var left = this.position.x;
-            c.drawImage(this.videoContainer.video, left, top, vidW * scale, vidH * scale);
-        }
-		
+		else {
+			c.drawImage(this.image, this.position.x - (this.width * 0.66) / 2, this.position.y, this.width * 0.66, this.height * 0.66);
+		}
+
 		if (!this.hasVelocity) {
-			this.flyingText.update(this.health + '/' + enemyMaxHealth);
+			this.flyingText.update(this.health + '/' + this.maxHealth);
 		}
     }
 
@@ -244,11 +269,15 @@ class Player extends Character {
 }
 
 class Enemy extends Character {
-	constructor(source, startPosition, player, damage) {
-		super(source, startPosition, false, enemySpeed, enemyMaxHealth);
+	constructor(source, startPosition, player, damage, health, isVideo, speed) {
+		super(source, startPosition, false, speed, health, isVideo);
 		this.player = player;
 		
-		this.video.muted = true;
+		if (isVideo) {
+			this.video.muted = true;
+		}
+		
+		this.audioIsPlaying = false;
 		
 		this.damage = damage;
 		this.attackInterval = attackInterval;
@@ -259,6 +288,17 @@ class Enemy extends Character {
 	
 	moveToPlayer() {
 		if (Math.abs(player.position.x - this.position.x) <= canvas.width) {
+			if (this.isVideo) {
+				this.video.muted = false;
+			}
+			
+			if (!this.isVideo) {
+				if (this.image == bossImage && !this.audioIsPlaying) {
+					play_audio(bossFightAudio);
+					this.audioIsPlaying = true;
+				}
+			}
+			
 			if (this.player.position.x < this.position.x) {
 				this.position.x -= this.speed;
 				this.flyingText.move(-this.speed);
@@ -273,6 +313,11 @@ class Enemy extends Character {
 			if (distanceToPlayerX < minDistanceToAttackX && distanceToPlayerY < minDistanceToAttackY && Date.now() - this.lastAttackTime > this.attackInterval) {
 				this.player.takeDamage(this.damage);
 				this.lastAttackTime = Date.now();
+			}
+		}
+		else {
+			if (this.isVideo) {
+				this.video.muted = true;
 			}
 		}
 	}
@@ -305,6 +350,9 @@ class Enemy extends Character {
 	
 	removeEnemy() {
         canvas.removeEventListener('click', this.handleClick);
+		if (this.isVideo) {
+			this.video.muted = true;
+		}
         const index = this.enemiesArray.indexOf(this);
         if (index !== -1) {
 			play_audio(deathAudio);
@@ -373,6 +421,7 @@ function createImage(imageSrc) {
 let platformImage = createImage(platform);
 let platformSmallTallImage = createImage(platformSmallTall);
 let ak47Image = createImage(ak47);
+let bossImage = createImage(boss);
 
 let player = new Player(character);
 let platforms = []
@@ -382,7 +431,7 @@ let enemies = []
 
 let characterItems = []
 
-let flyingTexts = []
+let chapterTexts = []
 
 let keys = {
     right: {
@@ -416,12 +465,28 @@ function init() {
         new Platform({x: platformImage.width * 3 - 3 * 3, y: 670, image: platformImage}),
         new Platform({x: platformImage.width * 4 - 3 * 4, y: 670, image: platformImage}),
         new Platform({x: platformImage.width * 5 - 3 * 5, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 6 - 3 * 6, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 7 - 3 * 7, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 8 - 3 * 8, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 9 - 3 * 9, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 10 - 3 * 10, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 11 - 3 * 11, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 12 - 3 * 12, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 13 - 3 * 13, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 14 - 3 * 14, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 15 - 3 * 15, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 16 - 3 * 16, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 17 - 3 * 17, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 18 - 3 * 18, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 19 - 3 * 19, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 20 - 3 * 20, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 21 - 3 * 21, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 22 - 3 * 22, y: 670, image: platformImage}),
+        new Platform({x: platformImage.width * 23 - 3 * 23, y: 670, image: platformImage}),
     ]
+	
     genericObjects = [
         new GenericObject({x: -1, y: -1, image: createImage(background)}),
-        //new GenericObject({x: -1, y: 70, image: createImage(background)}),
-        //new GenericObject({x: -1, y: 100, image: createImage(hills)}),
-        //new GenericObject({x: 1000, y: 100, image: createImage(hills)}),
     ]
  
 	characterItems = [
@@ -429,12 +494,41 @@ function init() {
 	]
 
 	enemies = [
-		new Enemy(character, {x: 1500, y: 472}, player, 1),
-		new Enemy(character, {x: 1800, y: 472}, player, 1),
+		/*new Enemy(enemy1, {x: 1800, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 2000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		
+		new Enemy(enemy5, {x: 3500, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 3700, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 3900, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		new Enemy(enemy5, {x: 4100, y: 472}, player, 1, enemy5MaxHealth, true, enemySpeed),
+		
+		new Enemy(enemy6, {x: 5600, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
+		new Enemy(enemy6, {x: 5800, y: 472}, player, 1, enemy6MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 6000, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		new Enemy(enemy1, {x: 6200, y: 472}, player, 1, enemy1MaxHealth, true, enemySpeed),
+		
+		new Enemy(enemy2, {x: 7500, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy2, {x: 7700, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy2, {x: 7900, y: 472}, player, 2, enemy2MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 8100, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 8300, y: 472}, player, 2, enemy3MaxHealth, true, enemySpeed),
+		
+		new Enemy(enemy3, {x: 9800, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy3, {x: 10000, y: 472}, player, 3, enemy3MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10200, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10400, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),
+		new Enemy(enemy4, {x: 10600, y: 472}, player, 3, enemy4MaxHealth, true, enemySpeed),*/
+		
+		new Enemy(bossImage, {x: 12500, y: 290}, player, 15, bossMaxHealth, false, bossSpeed),
 	]
 	
-	flyingTexts = [
-		new FlyingText({x: 1500, y: 100}).update('123'),
+	chapterTexts = [
+		{x: 1300, y: 100},
+		{x: 3000, y: 100},
+		{x: 5100, y: 100},
+		{x: 7200, y: 100},
+		{x: 9300, y: 100},
+		{x: 11600, y: 100},
 	]
 	
 	enemies.forEach(enemy => {
@@ -479,15 +573,32 @@ function animate() {
 		item.draw();
 	});
 	
+	c.fillStyle = 'white';
 	c.fillText('Управление', 35, 50);
 	c.fillText('W - прыжок', 35, 80);
 	c.fillText('A - влево', 35, 110);
 	c.fillText('D - вправо', 35, 140);
 	c.fillText('Mouse1 - выстрел', 35, 170);
-	c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 220, 50);
-	c.fillText('Убито: ' + kills, 220, 80);
+	
+	c.fillText('Здоровье: ' + player.health + '/' + playerMaxHealth, 260, 50);
+	c.fillText('Убито: ' + kills, 260, 80);
 	let time = new Date() - startTime;
-	c.fillText('Время: ' + Math.floor((time % (1000 * 60)) / 1000), 220, 110);
+	c.fillText('Время: ' + Math.floor((time % (1000 * 60)) / 1000), 260, 110);
+	
+	c.font = '36px Arial';
+	c.fillStyle = 'black';
+	let index = 1;
+	let bossIndex = 6;
+	chapterTexts.forEach(text => {
+		if (index !== bossIndex) {
+			c.fillText('Волна №' + index, text.x - scrollOffset, text.y);
+		}
+		else {
+			c.fillText('БОСС', text.x - scrollOffset, text.y);
+		}
+		index++;
+	});
+	c.fillStyle = 'white';
 	
     if (keys.right.pressed && player.position.x < 600) {
         player.velocity.x = player.speed;
@@ -499,7 +610,7 @@ function animate() {
     else {
         player.velocity.x = 0;
 
-        if (keys.right.pressed) {
+        if (keys.right.pressed && scrollOffset < 12000) {
             scrollOffset += player.speed;
             platforms.forEach(platform => {
                 platform.position.x -= player.speed;
@@ -566,7 +677,9 @@ addEventListener('keydown', ({ keyCode }) => {
 		
 		player.videoContainer.video.play();
 		enemies.forEach(enemy => {
-			enemy.videoContainer.video.play();
+			if (enemy.isVideo) {
+				enemy.videoContainer.video.play();
+			}
 		});
 	}
 	
