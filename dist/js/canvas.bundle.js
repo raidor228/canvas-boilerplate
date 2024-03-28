@@ -580,10 +580,20 @@ function gameOver(win) {
   link2.style.transform = 'translate(-50%, -50%)';
   link2.style.padding = '20px 40px';
   link2.style.fontSize = '30px';
+  var madeby = document.createElement('h1');
+  madeby.textContent = 'Made by iamraidor';
+  madeby.style.color = 'green';
+  madeby.style.position = 'fixed';
+  madeby.style.top = '80%';
+  madeby.style.left = '50%';
+  madeby.style.transform = 'translate(-50%, -80%)';
+  madeby.style.padding = '20px 40px';
+  madeby.style.fontSize = '30px';
   document.body.appendChild(interest);
   document.body.appendChild(statusText);
   document.body.appendChild(link);
   document.body.appendChild(link2);
+  document.body.appendChild(madeby);
   document.body.appendChild(restartButton);
 }
 var Player = /*#__PURE__*/function (_Character) {
